@@ -1,0 +1,31 @@
+class Solution {
+    public int firstUniqChar(String s) {
+        int k=0;
+         HashMap<Character,Integer> p=new HashMap<>();
+        for(int i=0;i<s.length();i++){
+            char curr=s.charAt(i);
+            if(p.containsKey(curr)){
+                int count=p.get(curr);
+                p.put(curr,count+1);
+                
+            }
+            else{
+                p.put(curr,1);
+            }
+        }
+        int c=0;
+        for(int i=0;i<s.length();i++) {
+            if(p.get(s.charAt(i)) == 1) {
+                c=i;
+                k++;
+                break;
+            }
+        }
+        if(k>0){
+            return c;
+        }
+        else{
+            return -1;
+        }
+    }
+}
